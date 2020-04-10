@@ -1,0 +1,280 @@
+{
+	"info": {
+		"_postman_id": "4b03e842-8e89-41e0-9e7d-f17904eee536",
+		"name": "JWJCW接口测试",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "登录",
+			"item": [
+				{
+					"name": "登录测试",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "640a55c3-061f-412b-9b86-7978a7ab59cf",
+								"exec": [
+									"",
+									"pm.test(\"检验Token\", function () {",
+									"    var jsonData = pm.response.json();",
+									"   //设置全局变量",
+									"   // pm.globals.set(\"token\", jsonData.data.accessToken.value);",
+									"   //设置局部变量",
+									"    pm.environment.set(\"token\", jsonData.data.accessToken.value);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://192.168.1.115:8800/jwjcw/auth/login?password=e10adc3949ba59abbe56e057f20f883e&username=admin",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"1",
+								"115"
+							],
+							"port": "8800",
+							"path": [
+								"jwjcw",
+								"auth",
+								"login"
+							],
+							"query": [
+								{
+									"key": "password",
+									"value": "e10adc3949ba59abbe56e057f20f883e"
+								},
+								{
+									"key": "username",
+									"value": "admin"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "token刷新",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": ""
+					},
+					"response": []
+				},
+				{
+					"name": "获取系统时间",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://192.168.1.115:8042/jwjcw/auth/serverTime"
+					},
+					"response": [
+						{
+							"name": "获取系统时间",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "http://192.168.1.115:8042/jwjcw/auth/serverTime"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 20 Mar 2020 07:50:39 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"date\": 20,\n    \"fullYear\": 2020,\n    \"month\": 2,\n    \"hour\": 15,\n    \"timeStr\": \"2020-03-20 15:50:38\",\n    \"time\": 1584690638951,\n    \"minute\": 50,\n    \"second\": 38\n}"
+						}
+					]
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "用户管理",
+			"item": [
+				{
+					"name": "分页获取用户",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"cacheable\": true,\r\n  \"children\": [\r\n    {}\r\n  ],\r\n  \"condition\": \"EQUAL\",\r\n  \"entityName\": \"string\",\r\n  \"ignoreFields\": \"string\",\r\n  \"pageNo\": 1,\r\n  \"pageSize\": 1,\r\n  \"propertyName\": \"string\",\r\n  \"queryName\": \"string\",\r\n  \"requestFields\": \"string\",\r\n  \"value\": [\r\n    {}\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://192.168.1.115:8042/jwjcw/sysAccount/list"
+					},
+					"response": []
+				},
+				{
+					"name": "获取当前用户资源列表",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": "http://192.168.1.115:8042/jwjcw/sysAccount/res"
+					},
+					"response": []
+				},
+				{
+					"name": "获取当前用户监督机构列表",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://192.168.1.115:8042/jwjcw/sysAccount/supervised"
+					},
+					"response": []
+				},
+				{
+					"name": "添加用户",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"accRoleList\": [\r\n    {\r\n      \"accId\": \"639865478281564160\",\r\n      \"createAccId\": \"596763299018838016\",\r\n      \"createAccName\": \"管理员\",\r\n      \"createTime\": \"2020-03-23T03:07:22.624Z\",\r\n      \"deleteFlag\": 0,\r\n      \"id\": \"639865478348673024\",\r\n      \"roleId\": \"619473745450504192\",\r\n      \"updateAccId\": \"\",\r\n      \"updateAccName\": \"\",\r\n      \"updateTime\": \"\"\r\n    }\r\n  ],\r\n  \"account\": \"\",\r\n  \"cardNum\": \"510339999960306329\",\r\n  \"createAccId\": \"596763299018838016\",\r\n  \"createAccName\": \"管理员\",\r\n  \"createTime\": \"2020-03-23T03:07:22.624Z\",\r\n  \"deleteFlag\": 0,\r\n  \"disableTime\": \"2020-03-31T03:07:22.624Z\",\r\n  \"disableTimeStr\": \"\",\r\n  \"id\": \"\",\r\n  \"ionline\": 0,\r\n  \"lastLgoinIp\": \"\",\r\n  \"lastLoginTime\": \"\",\r\n  \"level\": 3,\r\n  \"name\": \"测试接口\",\r\n  \"needChangePwd\": 0,\r\n  \"num\":1,\r\n  \"organId\": \"632161885168472064\",\r\n  \"organName\": \"第四纪检监察室\",\r\n  \"password\": \"HT@123456\",\r\n  \"position\": \"\",\r\n  \"positionName\": \"\",\r\n  \"rank\": \"\",\r\n  \"rankName\": \"\",\r\n  \"sex\": \"\",\r\n  \"sexName\": \"\",\r\n  \"status\": 1,\r\n  \"updateAccName\": \"\",\r\n  \"updateTime\": \"\",\r\n  \"workbench\": \"/jjjd\",\r\n  \"workbenchName\": \"领导工作台\"\r\n}\r\n"
+						},
+						"url": "http://192.168.1.115:8042/jwjcw/sysAccount/save"
+					},
+					"response": []
+				},
+				{
+					"name": "编辑用户",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": ""
+					},
+					"response": []
+				},
+				{
+					"name": "获取用户角色",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": ""
+					},
+					"response": []
+				},
+				{
+					"name": "修改当前用户密码",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": ""
+					},
+					"response": []
+				},
+				{
+					"name": "修改账号状态",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": ""
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

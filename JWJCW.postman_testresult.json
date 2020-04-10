@@ -1,0 +1,158 @@
+{
+	"id": "0af5ab88-a138-4245-939b-061a4d82b021",
+	"name": "JWJCW接口测试",
+	"timestamp": "2020-03-25T01:46:18.446Z",
+	"collection_id": "4b03e842-8e89-41e0-9e7d-f17904eee536",
+	"folder_id": 0,
+	"environment_id": "78bcec8a-641c-4786-a0e8-82ef5f708312",
+	"totalPass": 1,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "06f45d66-e483-44d6-acb2-eb9744178c68",
+			"name": "登录测试",
+			"url": "http://192.168.1.115:8800/jwjcw/auth/login?password=e10adc3949ba59abbe56e057f20f883e&username=admin",
+			"time": 738,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"检验Token": true
+			},
+			"testPassFailCounts": {
+				"检验Token": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				738
+			],
+			"allTests": [
+				{
+					"检验Token": true
+				}
+			]
+		},
+		{
+			"id": "f8ac2715-ea5d-407a-8168-1f3fe3ed2f17",
+			"name": "获取系统时间",
+			"url": "http://192.168.1.115:8042/jwjcw/auth/serverTime",
+			"time": 89,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				89
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "ad9bd9be-9af2-460a-9367-8a75c8b1d183",
+			"name": "分页获取用户",
+			"url": "http://192.168.1.115:8042/jwjcw/sysAccount/list",
+			"time": 192,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				192
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "cb0329b0-e6e9-48aa-8898-8fdcb560c894",
+			"name": "获取当前用户资源列表",
+			"url": "http://192.168.1.115:8042/jwjcw/sysAccount/res",
+			"time": 129,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				129
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "8960f518-361b-404e-a757-f0270e9bfff0",
+			"name": "获取当前用户监督机构列表",
+			"url": "http://192.168.1.115:8042/jwjcw/sysAccount/supervised",
+			"time": 98,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				98
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "e9c3e3b5-995b-46ae-831c-0327b4dc5e14",
+			"name": "添加用户",
+			"url": "http://192.168.1.115:8042/jwjcw/sysAccount/save",
+			"time": 158,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				158
+			],
+			"allTests": [
+				{}
+			]
+		}
+	],
+	"count": 1,
+	"collection": {
+		"requests": [
+			{
+				"id": "06f45d66-e483-44d6-acb2-eb9744178c68",
+				"method": "GET"
+			},
+			{
+				"id": "f8ac2715-ea5d-407a-8168-1f3fe3ed2f17",
+				"method": "GET"
+			},
+			{
+				"id": "ad9bd9be-9af2-460a-9367-8a75c8b1d183",
+				"method": "POST"
+			},
+			{
+				"id": "cb0329b0-e6e9-48aa-8898-8fdcb560c894",
+				"method": "GET"
+			},
+			{
+				"id": "8960f518-361b-404e-a757-f0270e9bfff0",
+				"method": "GET"
+			},
+			{
+				"id": "e9c3e3b5-995b-46ae-831c-0327b4dc5e14",
+				"method": "PUT"
+			}
+		]
+	}
+}
